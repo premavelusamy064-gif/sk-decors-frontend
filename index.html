@@ -159,8 +159,10 @@
   </div>
 </div>
 <script>
+      const API_BASE = "https://sk-decors-backend-production-2d85.up.railway.app";
 function loadHomeImages(){
-fetch("http://localhost:3000/api/gallery/homepage")    .then(res => res.json())
+fetch(`${API_BASE}/api/gallery/homepage`)
+  .then(res => res.json())
     .then(data => {
       const grid = document.getElementById("galleryGrid");
       grid.innerHTML = "";
@@ -175,7 +177,7 @@ fetch("http://localhost:3000/api/gallery/homepage")    .then(res => res.json())
 
 loadHomeImages();
 
-fetch("/api/gallery/slideshow")
+fetch(`${API_BASE}/api/gallery/slideshow`)
   .then(res => res.json())
   .then(data => {
     const box = document.getElementById("heroSlider");
@@ -210,7 +212,7 @@ function startSlideshow() {
     slideTimer = setInterval(showSlide, 3000);
   });
 }
-fetch("/api/services")
+fetch(`${API_BASE}/api/services`)
   .then(res=>res.json())
   .then(data=>{
     const box=document.getElementById("homeServices");
@@ -335,7 +337,7 @@ form.addEventListener('submit', async (e) => {
   formMsg.textContent = "Sending message...";
 
   try {
-    const res = await fetch("/api/contact", {
+    const res = await fetch(`${API_BASE}/api/contact`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
@@ -385,3 +387,4 @@ btn.addEventListener("click", () => {
 
 </body>
 </html>
+
