@@ -107,12 +107,12 @@ if(localStorage.getItem("isLoggedIn") !== "true"){
 
 <script>
   let adminId = null;
-
+    const API_BASE = "https://sk-decors-backend-production-2d85.up.railway.app";
 // Show logged-in username
 function loadAdminProfile(){
   const username = localStorage.getItem("adminUser");
 
-  fetch(`/api/admin-profile?username=${username}`)
+fetch(`${API_BASE}/api/admin-profile?username=${username}`)
     .then(res => res.json())
     .then(data => {
       if(data.error) return;
@@ -155,7 +155,7 @@ function logout(){
 
 // Function to fetch and update counts
 function updateDashboardCounts() {
-  fetch("/api/dashboard-summary")
+fetch(`${API_BASE}/api/dashboard-summary`)
     .then(res => res.json())
     .then(data => {
       console.log("DASHBOARD DATA:", data);   // 🔍 DEBUG LINE
@@ -189,7 +189,7 @@ function updateProfile(){
   const newUsername = document.getElementById("editUsername").value;
   const newEmail = document.getElementById("editEmail").value;
 
-  fetch(`/api/admin-profile/${adminId}`, {
+fetch(`${API_BASE}/api/admin-profile/${adminId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -215,7 +215,7 @@ function updateProfile(){
 function deleteProfile(){
   if(!confirm("Are you sure? Admin will be deleted.")) return;
 
-  fetch(`/api/admin-profile/${adminId}`, {
+fetch(`${API_BASE}/api/admin-profile/${adminId}`, {
     method: "DELETE"
   })
   .then(res => res.json())
@@ -239,3 +239,4 @@ setInterval(updateDashboardCounts, 5000);
 
 </body>
 </html>
+
