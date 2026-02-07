@@ -108,9 +108,10 @@ body{
 
 <script>
 let editId = null;
+      const API_BASE = "https://sk-decors-backend-production-2d85.up.railway.app";
 
 function loadServices(){
-  fetch("/api/services")
+fetch(`${API_BASE}/api/services`)
     .then(res=>res.json())
     .then(data=>{
       const box=document.getElementById("services");
@@ -141,13 +142,13 @@ function saveService(){
   if(val==="") return alert("Enter service");
 
   if(editId===null){
-    fetch("/api/services",{
+fetch(`${API_BASE}/api/services`,{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({service_name:val})
     }).then(loadServices);
   }else{
-    fetch("/api/services/"+editId,{
+fetch(`${API_BASE}/api/services/`+editId,{
       method:"PUT",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify({service_name:val})
@@ -165,7 +166,7 @@ function editService(id,name){
 
 function deleteService(id){
   if(confirm("Delete service?")){
-    fetch("/api/services/"+id,{method:"DELETE"})
+fetch(`${API_BASE}/api/services/`+id,{method:"DELETE"})
       .then(loadServices);
   }
 }
@@ -175,3 +176,4 @@ loadServices();
 
 </body>
 </html>
+
