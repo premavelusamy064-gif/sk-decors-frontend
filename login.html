@@ -165,7 +165,9 @@ html, body {
     <form onsubmit="return loginUser()">
         <input type="text" id="username" placeholder="Enter Username" required>
         <input type="password" id="password" placeholder="Enter Password" required>
-        <a href="#" class="forgot" onclick="openEmailBox()">Forgot Password?</a>
+<a href="javascript:void(0)" class="forgot" onclick="openEmailBox()">
+  Forgot Password?
+</a>
         <button class="login-btn" type="submit">Login</button>
     </form>
     <a href="index.html" class="back-home">← Back to Home</a>
@@ -232,22 +234,26 @@ function submitEmail() {
     if (!value) return alert("Enter email or username");
 
 fetch(`${API_BASE}/api/forgot-check`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ value })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            resetValue = value;
-            document.getElementById("emailPopup").style.display = "none";
-            document.getElementById("newPassPopup").style.display = "flex";
-        } else {
-            alert("Email or Username not found");
-        }
-    });
-}
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ value })
+})
+.then(res => res.json())
+.then(data => {
+  console.log("Forgot response:", data);
 
+  if (data.success) {
+    resetValue = value;
+    document.getElementById("emailPopup").style.display = "none";
+    document.getElementById("newPassPopup").style.display = "flex";
+  } else {
+    alert(data.message || "Email or Username not found");
+  }
+})
+.catch(err => {
+  console.error(err);
+  alert("Server error");
+});
 // RESET PASSWORD
 function saveNewPassword() {
     const newPass = document.getElementById("newPass").value;
@@ -281,5 +287,6 @@ function closePopups() {
 
 </body>
 </html>
+
 
 
