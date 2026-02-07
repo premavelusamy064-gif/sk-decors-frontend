@@ -78,6 +78,7 @@
 
 
 <script>
+        const API_BASE = "https://sk-decors-backend-production-2d85.up.railway.app";
 let images = [];
 let currentIndex = 0;
 
@@ -88,7 +89,7 @@ const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
 const thumbs = document.getElementById("thumbs");
 
-fetch("/api/gallery?section=gallery")
+fetch(`${API_BASE}/api/gallery?section=gallery`)
   .then(res => res.json())
   .then(data => {
     images = data;
@@ -162,3 +163,4 @@ modal.onclick = (e) => {
 
 </body>
 </html>
+
