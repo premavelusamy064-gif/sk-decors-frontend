@@ -15,11 +15,8 @@
 </section>
 </body>
 <script>
-    const completed=[
-{event:"Wedding", customer:"Arun", date:"2025-12-01"},
-{event:"Birthday", customer:"Swathi", date:"2025-11-20"}
-];
-
+    const API_BASE = "https://sk-decors-backend-production-2d85.up.railway.app";
+      fetch(`${API_BASE}/api/completed-events`)
 
 function loadCompleted(){
 const list=document.getElementById("completedList");
@@ -38,4 +35,5 @@ list.appendChild(card);
 
 window.onload=loadCompleted;
 </script>
+
 </html>
