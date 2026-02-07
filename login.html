@@ -231,7 +231,7 @@ function submitEmail() {
     const value = document.getElementById("resetEmail").value.trim();
     if (!value) return alert("Enter email or username");
 
-    fetch("http://localhost:3000/api/forgot-check", {
+fetch(`${API_BASE}/api/forgot-check`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ value })
@@ -256,7 +256,7 @@ function saveNewPassword() {
     if (!newPass || !confirmPass) return alert("Enter all fields");
     if (newPass !== confirmPass) return alert("Passwords do not match");
 
-    fetch("http://localhost:3000/api/reset-password", {
+fetch(`${API_BASE}/api/reset-password`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ value: resetValue, newPassword: newPass })
@@ -281,4 +281,5 @@ function closePopups() {
 
 </body>
 </html>
+
 
