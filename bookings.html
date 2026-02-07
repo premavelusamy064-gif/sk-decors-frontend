@@ -14,8 +14,9 @@
 <div id="bookingList" class="card-list"></div>
 </section>
 <script>
+      const API_BASE = "https://sk-decors-backend-production-2d85.up.railway.app";    
     function loadBookings(){
-  fetch("/api/bookings")
+  fetch(`${API_BASE}/api/bookings`)
     .then(res => res.json())
     .then(data => {
       const list = document.getElementById("bookingList");
@@ -44,4 +45,5 @@
 window.onload = loadBookings;
 </script>
 </body>
+
 </html>
