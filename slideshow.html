@@ -119,11 +119,12 @@ body{
 </div>
 
 <script>
-let editId = null;
+      const API_BASE = "https://sk-decors-backend-production-2d85.up.railway.app";
+  let editId = null;
 
 /* LOAD */
 function loadGallery(){
-  fetch("/api/gallery/slideshow")
+fetch(`${API_BASE}/api/gallery/slideshow`)
     .then(res=>res.json())
     .then(data=>{
       const g=document.getElementById("gallery");
@@ -158,11 +159,11 @@ function saveImage(){
   const f = new FormData();
   f.append("image", file);
 
-  let url = "/api/slideshow";
+let url = `${API_BASE}/api/slideshow`;
   let method = "POST";
 
   if(editId !== null){
-    url = `/api/slideshow/${editId}`;
+url = `${API_BASE}/api/slideshow/${editId}`;
     method = "PUT";
   }
 
@@ -190,7 +191,7 @@ function editImage(id){
 /* DELETE */
 function deleteImage(id){
   if(confirm("Delete this image?")){
-    fetch(`/api/slideshow/${id}`, { method:"DELETE" })
+fetch(`${API_BASE}/api/slideshow/${id}`, { method:"DELETE" })
       .then(res => res.json())
       .then(() => loadGallery());
   }
@@ -201,3 +202,4 @@ loadGallery();
 </script>
 </body>
 </html>
+
