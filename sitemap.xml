@@ -8,19 +8,19 @@
   </url>
 
   <url>
-    <loc>https://sk-decors.com/#services</loc>
+    <loc>https://sk-decors.com/services</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://sk-decors.com/#gallery</loc>
+    <loc>https://sk-decors.com/gallery</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://sk-decors.com/#contact</loc>
+    <loc>https://sk-decors.com/contact</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -32,3 +32,4 @@
   </url>
 
 </urlset>
+
